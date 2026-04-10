@@ -1,0 +1,8 @@
+{
+  "name": "NaijaGuard",
+  "description": "Community-powered security intelligence and emergency response platform for Nigeria.",
+  "requestFramePermissions": [
+    "geolocation",
+    "notifications"
+  ]
+}
