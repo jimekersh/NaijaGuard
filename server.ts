@@ -92,8 +92,9 @@ class IngestionService {
   }
 }
 
+const app = express();
+
 async function startServer() {
-  const app = express();
   app.set('trust proxy', 1); // Trust first proxy (Cloud Run/Nginx)
   const httpServer = createServer(app);
 
@@ -296,4 +297,8 @@ async function startServer() {
   });
 }
 
-startServer();
+if (process.env.NODE_ENV !== 'production' || !process.env.NETLIFY) {
+  startServer();
+}
+
+export { app };

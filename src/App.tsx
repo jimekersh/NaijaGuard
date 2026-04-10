@@ -6,7 +6,7 @@ import {
   Share2, EyeOff, Radio, Settings, LogOut, Phone,
   ShieldCheck, Activity, Zap, RefreshCw, Smartphone
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Markdown from 'react-markdown';
 import { formatDistanceToNow } from 'date-fns';
 import { supabase } from './lib/supabase';
@@ -89,6 +89,7 @@ export default function App() {
   }, []);
 
   const fetchReports = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from('reports')
@@ -104,6 +105,7 @@ export default function App() {
   };
 
   const fetchDistressSignals = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from('distress_signals')
